@@ -4,3 +4,5 @@
 
 /.vs
 /Temperature-Converter/.vs/Temperature-Converter
+/Temperature-Converter/Temperature-Converter.Business/obj/Debug/netcoreapp3.1
+/Temperature-Converter/Temperature-Converter.Business/obj
