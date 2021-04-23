@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Inject, OnChanges, OnInit } from '@angular/core';
+import { TemperatureTypes } from '../models/enums';
 import { TemperatureType } from '../models/temperature-type';
 import { TemperatureService } from '../temperature.service';
 
@@ -20,11 +21,12 @@ export class HomeComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.temperatureTypes = [
-      { name: 'Celsius', selected: true },
-      { name: 'Kelvin', selected: false },
-      { name: 'Fahrenheit', selected: false }
+      { id: TemperatureTypes.Celsius, name: 'Celsius', selected: true },
+      { id: TemperatureTypes.Kelvin, name: 'Kelvin', selected: false },
+      { id: TemperatureTypes.Fahrenheit, name: 'Fahrenheit', selected: false }
     ];
-    this.selectedType = 'Celsius'
+    this.selectedType = 'Celsius';
+    //console.log('ngOnInit: ', this.selectedType);
 
     this.celsius = 0;
     this.kelvin = 0;
@@ -36,6 +38,7 @@ export class HomeComponent implements OnInit, OnChanges {
   }
 
   public onTypeChanged(value: string) {
+    console.log('onTypeChanged: ', value);
     this.temperatureTypes.forEach(type => {
       if (type.name == value) {
         type.selected = true;
@@ -59,24 +62,29 @@ export class HomeComponent implements OnInit, OnChanges {
   public onCalculateClicked() {
     this.getTempsCalculated();
   }
-
+  //type:TemperatureTypes
   private getTempsCalculated(){
-    let value = 0;
+    let value:number = 0;
+    let type:TemperatureTypes;
     switch (this.selectedType){
       case 'Celsius':{
+        type = TemperatureTypes.Celsius;
         value = this.celsius;
         break;
       }
       case 'Kelvin':{
+        type = TemperatureTypes.Kelvin;
         value = this.kelvin;
         break;
       }
       case 'Fahrenheit':{
+        type = TemperatureTypes.Fahrenheit;
         value = this.fahrenheit;
         break;
       }
+      default:break;
     }
-    this.temperatureServices.getTemperatureCalculated(this.selectedType, value)
+    this.temperatureServices.getTemperatureCalculated(type, value)
       .subscribe(data => {
         console.log('getTemperatureCalculated: ', data);
         this.celsius = data.celsius;

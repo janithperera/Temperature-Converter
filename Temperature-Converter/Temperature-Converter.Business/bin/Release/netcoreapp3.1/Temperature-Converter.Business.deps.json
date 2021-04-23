@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "Temperature-Converter.Business/1.0.0": {
+        "runtime": {
+          "Temperature-Converter.Business.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Temperature-Converter.Business/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

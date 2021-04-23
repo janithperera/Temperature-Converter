@@ -1,9 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Mvc;
+using Temperature_Converter.Business.Enums;
 using Temperature_Converter.Business.Interfaces;
 
 namespace Temperature_Converter.Controllers
@@ -12,8 +8,15 @@ namespace Temperature_Converter.Controllers
 	[ApiController]
 	public class TemperatureController : ControllerBase
 	{
+		/// <summary>
+		/// The temperature services
+		/// </summary>
 		private readonly ITemperatureServices temperatureServices;
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="TemperatureController"/> class.
+		/// </summary>
+		/// <param name="temperatureServices">The temperature services.</param>
 		public TemperatureController(ITemperatureServices temperatureServices)
 		{
 			this.temperatureServices = temperatureServices;
@@ -26,7 +29,7 @@ namespace Temperature_Converter.Controllers
 		/// <param name="value">The value.</param>
 		/// <returns></returns>
 		[HttpGet("calculate")]
-		public ActionResult Calculate(string type, double value)
+		public ActionResult Calculate(TemperatureTypes type, double value)
 		{
 			var result = temperatureServices.Calculate(type, value);
 			if (result.Error)

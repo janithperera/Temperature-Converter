@@ -1,5 +1,9 @@
 # Temperature Converter
 
-Clone the repository and opend the project with Visual Studio 2019.
-Just click run :)
-You can access swagger documentation as well. Just type '/swagger' to the end of the application URL.
+## Instructions to run
+- Clone the repository. 
+- Open the project with Visual Studio 2019.
+- Run the project (press F5)
+
+**You can access the swagger documentation by adding '/swagger'(ex:-https://localhost:44337/swagger/index.html) to end of the application URL.**
+**The application can be accessed here https://temperatureconverter-insighture.azurewebsites.net/**
