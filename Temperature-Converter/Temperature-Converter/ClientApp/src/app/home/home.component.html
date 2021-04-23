@@ -1,1 +1,45 @@
-
+<div>
+  <form>
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <label for="inputTemp">Temperature type you want to convert</label>
+        <select id="inputTemp" class="form-control"
+                (change)="onTypeChanged($event.target.value)"
+                >
+          <option
+                  [selected]="type.selected"
+                  [ngValue]="type.name"
+                  *ngFor="let type of temperatureTypes"
+                  
+           >{{type.name}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="inputCelsius">Celsius</label>
+        <input type="number" step="0.0" class="form-control" id="inputCelsius" placeholder="Celsius"
+               [value]="celsius"
+               [disabled]="selectedType!='Celsius'"
+               (input)="onCelsiusChanged($event.target.value)">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="inputKelvin">Kelvin</label>
+        <input type="number" step="0.0"  class="form-control" id="inputKelvin" placeholder="Kelvin"
+               [value]="kelvin"
+               [disabled]="selectedType!='Kelvin'"
+               (input)="onKelvinChanged($event.target.value)">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="inputFahrenheit">Fahrenheit</label>
+        <input type="number" step="0.0"  class="form-control" id="inputFahrenheit" placeholder="Fahrenheit"
+               [value]="fahrenheit"
+               [disabled]="selectedType!='Fahrenheit'"
+               (input)="onFahrenheitChanged($event.target.value)">
+      </div>
+    </div>
+    <div class="form-row">
+      <button type="button" class="btn btn-primary">Calculate</button>
+    </div>
+  </form>
+</div>
