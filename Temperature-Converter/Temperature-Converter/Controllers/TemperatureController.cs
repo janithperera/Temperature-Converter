@@ -19,7 +19,12 @@ namespace Temperature_Converter.Controllers
 			this.temperatureServices = temperatureServices;
 		}
 
-
+		/// <summary>
+		/// Calculates the specified type.
+		/// </summary>
+		/// <param name="type">The type.</param>
+		/// <param name="value">The value.</param>
+		/// <returns></returns>
 		[HttpGet("calculate")]
 		public ActionResult Calculate(string type, double value)
 		{

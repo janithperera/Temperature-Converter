@@ -23,6 +23,10 @@ namespace Temperature_Converter
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddControllersWithViews();
+			services.AddSwaggerGen(c =>
+			{
+				c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "Temperature-Converter", Version = "v1" });
+			});
 
 			services.AddScoped<ITemperatureServices, TemperatureServices>();
 
@@ -39,6 +43,8 @@ namespace Temperature_Converter
 			if (env.IsDevelopment())
 			{
 				app.UseDeveloperExceptionPage();
+				app.UseSwagger();
+				app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Temperature-Converter v1"));
 			}
 			else
 			{
